@@ -178,7 +178,8 @@ class SocketBaker:
 
         emit_node = temp_nodes.new("ShaderNodeEmission")
 
-        emit_node_rgb = temp_nodes.new("ShaderNodeCombineRGB")
+        emit_node_rgb = temp_nodes.new("ShaderNodeCombineColor")
+        emit_node_rgb.mode = "RGB"
 
         links.new(out_node.inputs[0], emit_node.outputs[0])
 
