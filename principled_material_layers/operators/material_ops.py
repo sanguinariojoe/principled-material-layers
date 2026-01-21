@@ -1161,11 +1161,20 @@ _register, _unregister = bpy.utils.register_classes_factory(classes)
 def register():
     _register()
 
-    bpy.types.WindowManager.pml_ma_assets = CollectionProperty(
-        type=AssetHandle)
+    try:
+        bpy.types.WindowManager.pml_ma_assets = CollectionProperty(
+            type=AssetHandle)
+    except ValueError:
+        # Not available on Blender >= 5.0
+        # Is this needed anyway?
+        pass
 
 
 def unregister():
-    del bpy.types.WindowManager.pml_ma_assets
+    try:
+        del bpy.types.WindowManager.pml_ma_assets
+    except AttributeError:
+        # Not available on Blender >= 5.0
+        pass        
 
     _unregister()
