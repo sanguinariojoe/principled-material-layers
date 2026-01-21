@@ -478,7 +478,11 @@ class SocketBaker:
                             TempChanges(scene.render.bake, False))
 
             render_props.engine = 'CYCLES'
-            render_props.use_bake_multires = False
+            try:
+                render_props.use_bake_multires = False
+            except AttributeError:
+                # Removed on Blender >= 5.0
+                pass
 
             cycles_props.bake_type = 'EMIT'
             cycles_props.film_exposure = 1.0
