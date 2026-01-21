@@ -183,7 +183,8 @@ class SocketBaker:
         links.new(out_node.inputs[0], emit_node.outputs[0])
 
         existing_img_node = temp_nodes.new("ShaderNodeTexImage")
-        existing_img_node_rgb = temp_nodes.new("ShaderNodeSeparateRGB")
+        existing_img_node_rgb = temp_nodes.new("ShaderNodeSeparateColor")
+        existing_img_node_rgb.mode = "RGB"
         links.new(existing_img_node_rgb.inputs[0],
                   existing_img_node.outputs[0])
 
