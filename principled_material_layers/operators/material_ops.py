@@ -8,6 +8,12 @@ from typing import (Any, Callable, Container, Dict, List, NamedTuple,
 
 import bpy
 
+try:
+    from bpy.types import AssetHandle
+except ImportError:
+    # Blender >= 5.0
+    from bpy.types import AssetRepresentation as AssetHandle
+
 from bpy.props import (BoolProperty,
                        CollectionProperty,
                        EnumProperty,
@@ -1156,7 +1162,7 @@ def register():
     _register()
 
     bpy.types.WindowManager.pml_ma_assets = CollectionProperty(
-                                              type=bpy.types.AssetHandle)
+        type=AssetHandle)
 
 
 def unregister():
