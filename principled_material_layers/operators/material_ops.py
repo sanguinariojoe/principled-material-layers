@@ -857,7 +857,7 @@ class PML_OT_replace_layer_material(ReplaceLayerMaOpBase, Operator):
         row.scale_y = 2.0
         row.template_list("PML_UL_load_material_list", "",
                           bpy.data, "materials", self, "ma_index",
-                          type='GRID', rows=4, columns=2)
+                          type='DEFAULT', rows=4, columns=2)
 
     def execute(self, context):
         layer_stack = get_layer_stack(context)
